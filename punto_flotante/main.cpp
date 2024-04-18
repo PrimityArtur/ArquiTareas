@@ -295,8 +295,11 @@ void FPMultiplication::run(float _a, float _b) {
     a = _a;
     b = _b;
 
-    std::cout << " ---------------------------------------- " << std::endl;
-    std::cout << a << " * " << b << std::endl;
+    std::cout << " ---------------------------------------- \n\n";
+    std::cout << " || " << std::string(5, ' ') << a << " * " << b << "\n\n";
+    std::cout << "Caso del lenguaje de programacion: " << a << " * " << b << " = " << a * b << std::endl;
+    std::cout << "Resultado del algoritmo: " << std::endl;
+
 
     if (isZero()) {
         std::cout << "Al menos uno de los valores ingresados es cero." << std::endl;
@@ -315,11 +318,11 @@ void FPMultiplication::run(float _a, float _b) {
 
     assembleResult();
 
-    std::cout << sig1 << " " << exp1 << " " << mant1 << " * " << sig2 << " " << exp2 << " " << mant2 << std::endl;
+
+    std::cout << sig1 << " " << exp1 << " " << mant1 << " * " << sig2 << " " << exp2 << " " << mant2 << " = " << std::endl;
 
     float result_number = *reinterpret_cast<float*>(&result);
     std::cout << result_sign << " " << result_exp << " " << result_mant << " = " << result_number << std::endl;
-    std::cout << "Caso del lenguaje de programacion: " << a << " * " << b << " = " << a * b << std::endl;
 }
 
 
@@ -333,11 +336,19 @@ int main() {
     FPMultiplication fpm;
     fpm.run(a, b);
     fpm.run(1E-10, 1E-30);
+    fpm.run(1E-10, 0);
     fpm.run(1.0, 1.0);
     fpm.run(5.455, -3.54545);
     fpm.run(2444, -157);
     fpm.run(5.0, 3.0);
 
+
+    std::cout << " ---------------------------------------- " << std::endl;
+    std::cout << "Ingrese un numero: " << std::endl;
+    std::cin >> a;
+    std::cout << "Ingrese otro numero: " << std::endl;
+    std::cin >> b;
+    fpm.run(a, b);
 
     return 0;
 }
